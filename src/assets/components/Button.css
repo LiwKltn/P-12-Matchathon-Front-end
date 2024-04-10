@@ -1,0 +1,55 @@
+.animated-button {
+    width: 200px; /* Ajusta el ancho del botón según lo necesites */
+    height: 200px; /* Ajusta la altura del botón según lo necesites */
+    border-radius: 50%; /* Hace que el botón sea completamente redondo */
+    position: relative; /* Necesario para alinear correctamente el texto */
+    overflow: hidden; /* Para asegurar que el texto no se desborde del botón */
+    background: linear-gradient(to bottom right, #8a2be2, #007fff); /* Fondo del botón */
+    border: none; /* Elimina el borde del botón */
+    outline: none; /* Elimina el contorno del botón al hacer clic */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: transform 0.2s ease-in-out; /* Transición suave al escalar el botón */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px; /* Tamaño del texto del botón */
+  }
+  
+  .animated-button span {
+    display: inline-block;
+  }
+  
+  .animated-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .animated-button:active {
+    animation: palpitating 0.5s infinite alternate;
+  }
+  
+  @keyframes palpitating {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.05);
+    }
+  }
+  
+  .exploding {
+    animation: explode 1s linear;
+  }
+  
+  @keyframes explode {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
+  
+  
