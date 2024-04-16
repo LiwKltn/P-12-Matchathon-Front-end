@@ -1,10 +1,12 @@
 import React from 'react';
-import FormTeamComponent from '../components/FormTeam';
+
+import FormTeam from '../components/FormTeam';
 
 const Home = () => {
   return (
     <>
-    <FormTeamComponent/>
+
+    <FormTeam/>
     </>
   )
 }
