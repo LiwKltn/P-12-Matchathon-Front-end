@@ -1,12 +1,12 @@
 import React from 'react';
 
-import FormTeam from '../components/FormTeam';
+import FormCoders from '../components/FormCoders';
 
 const Home = () => {
   return (
     <>
 
-    <FormTeam/>
+    <FormCoders/>
     </>
   )
 }
