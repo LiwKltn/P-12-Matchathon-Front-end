@@ -6,6 +6,9 @@ import FormCodersUser from '../components/Atoms/FormCodersUser';
 import FormCodersBootcamp from '../components/Atoms/FormCodersBootcamp';
 import FormCodersButton from '../components/Atoms/FormCodersButton';
 import FormCodersFrontTech from './Atoms/FormCodersFrontTech';
+import FormCodersBackendTech from './Atoms/FormCodersBackTech';
+import FormCodersControlVersion from './Atoms/FormCodersControlVersion';
+import FormCodersLevel from './Atoms/FormCodersLevel';
 
 
 
@@ -40,7 +43,30 @@ const FormTeam = () => {
       frontendtechnology: frontendTechnologyId
     });
   };
-  
+
+  const handleBackendTechnologyChange = (e) => {
+    const backendTechnologyId = e.target.value;
+    setFormData({
+      ...formData,
+      backendtechnology: backendTechnologyId
+    });
+  };
+
+  const handleControlVersionChange = (e) => {
+    const controlVersionId = e.target.value;
+    setFormData({
+      ...formData,
+      controlversion: controlVersionId
+    });
+  };
+
+  const handleLevelChange = (e) => {
+    const levelId = e.target.value;
+    setFormData({
+      ...formData,
+      level: levelId
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,11 +86,23 @@ const FormTeam = () => {
   };
 
   return (
+    
     <div className="items-center justify-center mt-20">
       <form className="max-w-md mx-auto">
         <FormCodersUser formData={formData} handleChange={handleChange} />
         <FormCodersBootcamp formData={formData} handleBootcampChange={handleBootcampChange} />
+        <div className="flex">
         <FormCodersFrontTech formData={formData} handleFrontendTechnologyChange={handleFrontendTechnologyChange} />
+        <FormCodersLevel formData={formData} handleLevelChange={handleLevelChange} />
+        </div>
+        <div className="flex">
+        <FormCodersBackendTech formData={formData} handleBackendTechnologyChange={handleBackendTechnologyChange} />
+        <FormCodersLevel formData={formData} handleLevelChange={handleLevelChange} />
+        </div>
+        <div className="flex">
+        <FormCodersControlVersion formData={formData} handleControlVersionChange={handleControlVersionChange} />
+        <FormCodersLevel formData={formData} handleLevelChange={handleLevelChange} />
+        </div>
         <FormCodersButton handleSubmit={handleSubmit} />
       </form>
     </div>
