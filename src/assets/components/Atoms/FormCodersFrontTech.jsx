@@ -18,7 +18,7 @@ const FormCodersFrontTech = ({ formData, handleFrontendTechnologyChange }) => {
   }, []);
 
   return (
-    <div className="flex flex-col w-1/2 mr-4">
+    <div className="flex flex-col w-1/2 mr-4 mb-4">
       <select
         className="p-2 border border-gray-300 rounded"
         name="frontendtechnology"
