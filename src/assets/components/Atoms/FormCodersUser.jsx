@@ -10,7 +10,7 @@ const FormCodersUser = ({ formData, handleChange }) => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="Name"
+          placeholder="Nombre"
           required
         />
         <input
@@ -19,7 +19,7 @@ const FormCodersUser = ({ formData, handleChange }) => {
           name="lastname"
           value={formData.lastname}
           onChange={handleChange}
-          placeholder="Last Name"
+          placeholder="Apellidos"
           required
         />
         <input

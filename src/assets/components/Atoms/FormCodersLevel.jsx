@@ -18,14 +18,15 @@ const FormCodersLevel = ({ formData, handleLevelChange }) => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col w-1/2">
       <select
+        className="p-2 border border-gray-300 rounded"
         name="level"
         value={formData.level}
         onChange={handleLevelChange}
         required
       >
-        <option value="">Select your level</option>
+        <option value="">nivel</option>
         {levels.map((level) => (
           <option key={level.id} value={level.id}>{level.level}</option>
         ))}

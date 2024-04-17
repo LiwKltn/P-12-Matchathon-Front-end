@@ -18,14 +18,15 @@ const FormCodersControlVersion = ({ formData, handleControlVersionChange }) => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col w-1/2 mr-4">
       <select
+        className="p-2 border border-gray-300 rounded"
         name="controlversion"
         value={formData.controlversion}
         onChange={handleControlVersionChange}
         required
       >
-        <option value="">Select your control version</option>
+        <option value="">Control de versiones</option>
         {controlVersions.map((controlVersion) => (
           <option key={controlVersion.id} value={controlVersion.id}>{controlVersion.controlversion}</option>
         ))}

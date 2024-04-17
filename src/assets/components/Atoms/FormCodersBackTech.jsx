@@ -18,14 +18,15 @@ const FormCodersBackendTech = ({ formData, handleBackendTechnologyChange }) => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col w-1/2 mr-4">
       <select
+        className="p-2 border border-gray-300 rounded"
         name="backendtechnology"
         value={formData.backendtechnology}
         onChange={handleBackendTechnologyChange}
         required
       >
-        <option value="">Select your backend technology</option>
+        <option value="">Backend technology</option>
         {backendTechnologies.map((backendTechnology) => (
           <option key={backendTechnology.id} value={backendTechnology.id}>{backendTechnology.backendtechnology}</option>
         ))}

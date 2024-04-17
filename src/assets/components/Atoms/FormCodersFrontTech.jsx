@@ -18,14 +18,15 @@ const FormCodersFrontTech = ({ formData, handleFrontendTechnologyChange }) => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col w-1/2 mr-4">
       <select
+        className="p-2 border border-gray-300 rounded"
         name="frontendtechnology"
         value={formData.frontendtechnology}
         onChange={handleFrontendTechnologyChange}
         required
       >
-        <option value="">Select your frontend technology</option>
+        <option value="">Frontend technology</option>
         {frontendTechnologies.map((frontendTechnology) => (
           <option key={frontendTechnology.id} value={frontendTechnology.id}>{frontendTechnology.frontendtechnology}</option>
         ))}
