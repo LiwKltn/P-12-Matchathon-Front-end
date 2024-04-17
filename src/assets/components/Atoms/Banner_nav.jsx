@@ -3,7 +3,7 @@ import Banner from '../../../images/Matchathon_navbar.png'
 
 const Banner_nav = () => {
   return (
-<div>
+<div className='flex justify-center items-center'>
 <img src={Banner} alt="Descripción de la imagen" />
 </div>
   )
