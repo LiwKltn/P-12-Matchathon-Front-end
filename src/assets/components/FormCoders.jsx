@@ -87,7 +87,7 @@ const FormTeam = () => {
 
   return (
     
-    <div className="items-center justify-center mt-20">
+    <div className="items-center justify-center mt-10">
       <form className="max-w-md mx-auto">
         <FormCodersUser formData={formData} handleChange={handleChange} />
         <FormCodersBootcamp formData={formData} handleBootcampChange={handleBootcampChange} />

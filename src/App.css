@@ -1,3 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@font-face {
+    font-family: 'Clash Grotesk';
+    src: url('./fonts/OTF/ClashGrotesk-Regular.otf') format('opentype'); 
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  *{
+    font-family: 'Clash Grotesk';
+  }

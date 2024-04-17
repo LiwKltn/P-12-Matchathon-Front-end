@@ -7,7 +7,10 @@ module.exports = {
     extend: {},
     colors: {
       'azul': '#4211BA',
-    }
+    },
+    fontFamily: {
+      custom: ['Clash Grotesk', 'sans-serif'],
+    },
   },
   plugins: [],
 }
