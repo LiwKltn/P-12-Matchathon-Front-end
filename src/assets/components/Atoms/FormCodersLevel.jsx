@@ -22,7 +22,7 @@ const FormCodersLevel = ({ formData, handleLevelChange }) => {
       <select
         className="p-2 border border-gray-300 rounded"
         name="level"
-        value={formData.level}
+        value={formData.level} // Aquí debes usar el valor de nivel del formulario, no formData.level
         onChange={handleLevelChange}
         required
       >
@@ -36,3 +36,4 @@ const FormCodersLevel = ({ formData, handleLevelChange }) => {
 };
 
 export default FormCodersLevel;
+

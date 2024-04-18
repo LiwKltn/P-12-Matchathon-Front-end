@@ -1,6 +1,14 @@
 import React from 'react';
 
-const FormCodersUser = ({ formData, handleChange }) => {
+const FormCodersUser = ({ formData, setFormData }) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
   return (
     <div className="flex justify-center items-center h-full">
       <div className="w-full max-w-md">

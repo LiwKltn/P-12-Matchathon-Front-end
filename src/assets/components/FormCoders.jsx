@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import FormCodersUser from '../components/Atoms/FormCodersUser';
 import FormCodersBootcamp from '../components/Atoms/FormCodersBootcamp';
-import FormCodersButton from '../components/Atoms/FormCodersButton';
+import FormCodersButton from '../components/Atoms/FormCodersButton'; // Importa el componente Button
 import FormCodersFrontTech from './Atoms/FormCodersFrontTech';
 import FormCodersBackendTech from './Atoms/FormCodersBackTech';
 import FormCodersControlVersion from './Atoms/FormCodersControlVersion';
 import FormCodersLevel from './Atoms/FormCodersLevel';
 
-const FormTeam = () => {
+const FormCoders = () => {
   const [formData, setFormData] = useState({
     name: '',
     lastname: '',
     email: '',
-    bootcamp_id: ''
+    bootcamp_id: '',
+    active: false,
+    role_id: '2',
+    backendtechnology: '',
+    frontendtechnology: '',
+    controlversion: '',
   });
 
   const [frontendLevel, setFrontendLevel] = useState('');
@@ -75,24 +80,44 @@ const FormTeam = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://127.0.0.1:8000/api/users', formData);
+      // Envío de los datos del formulario a través de una solicitud POST usando Axios
+      const response = await axios.post('http://127.0.0.1:8000/api/users', formData);
+      
+      // Manejar la respuesta según sea necesario
+      console.log('Respuesta del servidor:', response.data);
+      
+      // Reiniciar el estado del formulario después de enviar los datos
       setFormData({
         name: '',
         lastname: '',
         email: '',
-        bootcamp_id: ''
+        bootcamp_id: '',
+        backendtechnology: '',
+        frontendtechnology: '',
+        controlversion: ''
       });
+      
+      // Reiniciar los niveles
+      setFrontendLevel('');
+      setBackendLevel('');
+      setVersionControlLevel('');
+      
+      // Mostrar mensaje de éxito
       alert('Formulario enviado correctamente');
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
       alert('Ocurrió un error al enviar el formulario');
+      if (error.response && error.response.data) {
+        console.error('Respuesta del servidor:', error.response.data);
+        alert('Errores de validación: ' + JSON.stringify(error.response.data.errors));
+      }
     }
   };
-
+  
   return (
     <div className="items-center justify-center mt-10">
-      <form className="max-w-md mx-auto">
-        <FormCodersUser formData={formData} handleChange={handleChange} />
+      <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
+        <FormCodersUser formData={formData} setFormData={setFormData} />
         <FormCodersBootcamp formData={formData} handleBootcampChange={handleBootcampChange} />
         <div className="flex">
           <FormCodersFrontTech formData={formData} handleFrontendTechnologyChange={handleFrontendTechnologyChange} />
@@ -107,10 +132,13 @@ const FormTeam = () => {
           <FormCodersLevel formData={formData} level={versionControlLevel} handleLevelChange={handleVersionControlLevelChange} />
         </div>
         <FormCodersButton handleSubmit={handleSubmit} />
+
       </form>
     </div>
   );
 };
 
-export default FormTeam;
+export default FormCoders;
+
+
 
