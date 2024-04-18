@@ -80,13 +80,14 @@ const FormCoders = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Envío de los datos del formulario a través de una solicitud POST usando Axios
-      const response = await axios.post('http://127.0.0.1:8000/api/users', formData);
-      
-      // Manejar la respuesta según sea necesario
+      const dataToSend = {
+        ...formData,
+        backend_level: backendLevel,
+        frontend_level: frontendLevel,
+        version_control_level: versionControlLevel
+      };
+      const response = await axios.post('http://127.0.0.1:8000/api/users', dataToSend);
       console.log('Respuesta del servidor:', response.data);
-      
-      // Reiniciar el estado del formulario después de enviar los datos
       setFormData({
         name: '',
         lastname: '',
@@ -96,13 +97,9 @@ const FormCoders = () => {
         frontendtechnology: '',
         controlversion: ''
       });
-      
-      // Reiniciar los niveles
       setFrontendLevel('');
       setBackendLevel('');
       setVersionControlLevel('');
-      
-      // Mostrar mensaje de éxito
       alert('Formulario enviado correctamente');
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
