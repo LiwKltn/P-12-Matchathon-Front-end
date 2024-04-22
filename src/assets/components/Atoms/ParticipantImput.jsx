@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useFetch from '../../service/useFetch';
 
-const ParticipantImput = () => {
+const ParticipantInput = () => {
   const [users, setUsers] = useState([]);
   const [teams, setTeams] = useState([]);
   const [totalUsers, setTotalUsers] = useState(0);
@@ -66,45 +66,53 @@ const ParticipantImput = () => {
       console.error('Error al almacenar equipos:', error);
     }
   };
-  
 
   return (
-    <div>
-      <h1>Total de usuarios activos: {filteredUsers.length}</h1>
-      <div>
-        <label htmlFor="minParticipants">Número mínimo de participantes:</label>
-        <input
-          id="minParticipants"
-          type="number"
-          value={minParticipants}
-          onChange={(e) => setMinParticipants(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="maxParticipants">Número máximo de participantes:</label>
-        <input
-          id="maxParticipants"
-          type="number"
-          value={maxParticipants}
-          onChange={(e) => setMaxParticipants(e.target.value)}
-        />
-      </div>
-      <button onClick={generateTeams}>Generar Equipos</button>
-      {teams.map((team, index) => (
-        <div key={index}>
-          <h3>Equipo {index + 1}</h3>
-          <ul>
-            {team.map(user => (
-              <li key={user.id}>{user.name}</li>
-            ))}
-          </ul>
+    <div className="flex flex-col items-center justify-center">
+      <div className="max-w-screen-lg">
+        <h1 className="text-center mt-10 font-custom text-2xl mb-4">De {totalUsers} coders inscritos</h1>
+        <div className="flex flex-wrap justify-center"> {/* Contenedor de las dos columnas */}
+          <div className="w-full md:w-1/2 md:mr-2 md:mb-0"> {/* Columna 1 */}
+            <label htmlFor="minParticipants" className="block mb-2">Número mínimo de participantes:</label>
+            <input
+              id="minParticipants"
+              type="number"
+              value={minParticipants}
+              onChange={(e) => setMinParticipants(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400"
+            />
+          </div>
+          <div className="w-full md:w-1/2 md:ml-2"> {/* Columna 2 */}
+            <label htmlFor="maxParticipants" className="block mb-2">Número máximo de participantes por equipo:</label>
+            <input
+              id="maxParticipants"
+              type="number"
+              value={maxParticipants}
+              onChange={(e) => setMaxParticipants(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-400"
+            />
+          </div>
         </div>
-      ))}
+        <div className="text-center mb-4">
+          <button onClick={generateTeams} className="px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600">Generar Equipos</button>
+        </div>
+        {teams.map((team, index) => (
+          <div key={index} className="mb-4">
+            <h3 className="text-center mb-2">Equipo {index + 1}</h3>
+            <ul className="text-center">
+              {team.map(user => (
+                <li key={user.id} className="inline-block px-4 py-2 bg-gray-200 rounded-md mx-1">{user.name}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default ParticipantImput;
+export default ParticipantInput;
+
 
 
 
