@@ -1,38 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
+import React from 'react';
+import useFetch from '../../service/useFetch';
 const Participants = () => {
-  const [totalUsers, setTotalUsers] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get('http://127.0.0.1:8000/api/users');
-      const users = response.data; // Supongamos que la respuesta es una lista de usuarios
-      setTotalUsers(users.length);
-    } catch (error) {
-      setError('Error fetching users. Please try again.');
-    }
-    setIsLoading(false);
-  };
-
+  const url = "http://127.0.0.1:8000/api/users"; 
+  const { data } = useFetch(url);
+  if (data === null) {
+    return <>Loading</>;
+  }
+  // Filtrar usuarios con role_id igual a 2 y active igual a 1
+  const filteredUsers = data.filter(user => user.role_id === 2 && user.active === true);
+  // Contar el número de usuarios filtrados
+  const filteredUsersCount = filteredUsers.length;
   return (
     <div>
-      <h2>Total Participants</h2>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>Error: {error}</p>
-      ) : (
-        <p>Total users: {totalUsers}</p>
-      )}
+      <h1>Total de Usuarios activos en esta Hackathon son: {filteredUsersCount}</h1>
     </div>
   );
-};
-
+}
 export default Participants;
