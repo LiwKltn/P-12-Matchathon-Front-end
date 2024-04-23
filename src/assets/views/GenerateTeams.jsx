@@ -2,6 +2,7 @@ import React from 'react'
 import Participants from '../components/Atoms/Participants'
 import ParticipantImput from '../components/Atoms/ParticipantImput'
 import Banner_nav from '../components/Atoms/Banner_nav'
+import TeamList from '../components/Atoms/TeamList'
 
 const GenerateTeams = () => {
   return (
@@ -9,7 +10,7 @@ const GenerateTeams = () => {
       <Banner_nav />
       <Participants />
       <ParticipantImput />
-
+      <TeamList />
     </div>
   )
 }

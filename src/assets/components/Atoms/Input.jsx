@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import useFetch from '../../service/useFetch';
 
-const ParticipantInput = () => {
+const Input = () => {
   const [users, setUsers] = useState([]);
   const [teams, setTeams] = useState([]);
   const [totalUsers, setTotalUsers] = useState(0);
   const [minParticipants, setMinParticipants] = useState('');
   const [maxParticipants, setMaxParticipants] = useState('');
+  const { data } = useFetch("http://localhost:8000/api/users");
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -22,6 +24,8 @@ const ParticipantInput = () => {
     fetchUsers();
   }, []);
 
+  const filteredUsers = data ? data.filter(user => user.role_id === 2 && user.active === true) : [];
+
   const generateTeams = async () => {
     // Verificar si los campos mínimos y máximos están llenos antes de generar equipos
     if (!minParticipants || !maxParticipants) {
@@ -29,7 +33,7 @@ const ParticipantInput = () => {
       return;
     }
   
-    const numUsers = users.length;
+    const numUsers = filteredUsers.length;
     const min = parseInt(minParticipants);
     const max = parseInt(maxParticipants);
   
@@ -45,12 +49,12 @@ const ParticipantInput = () => {
     for (let i = 0; i < numTeams; i++) {
       const startIndex = i * max;
       const endIndex = Math.min(startIndex + max, numUsers);
-      const team = users.slice(startIndex, endIndex);
+      const team = filteredUsers.slice(startIndex, endIndex);
       teamsArray.push(team);
     }
   
     // Modificar el formato de los datos para enviar el nombre del equipo como 'team'
-    const teamsData = teamsArray.map((team, index) => ({ team: `Team${index + 1}`, users: team }));
+    const teamsData = teamsArray.map((team, index) => ({ team: `Team${index + 1}` }));
   
     // Enviar los equipos generados al backend
     try {
@@ -58,11 +62,10 @@ const ParticipantInput = () => {
         teams: teamsData,
       });
       alert('Equipos almacenados exitosamente.');
-      setTeams(teamsData); // Actualizar el estado de teams con los equipos generados
     } catch (error) {
       console.error('Error al almacenar equipos:', error);
-    }  
-  };  
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -94,15 +97,13 @@ const ParticipantInput = () => {
           <button onClick={generateTeams} className="px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600">Generar Equipos</button>
         </div>
         {teams.map((team, index) => (
-  <div key={index} className="mb-4">
-    <h3 className="text-center mb-2">Equipo {index + 1}</h3>
-    <ul className="text-center">
-      {team.users.map(user => (
-        <li key={user.id} className="inline-block px-4 py-2 bg-gray-200 rounded-md mx-1">
-          {user.name} (ID: {user.id}, BackendTech Level: {user.backendTechLevel})
-        </li>
-      ))}
-    </ul>
+          <div key={index} className="mb-4">
+            <h3 className="text-center mb-2">Equipo {index + 1}</h3>
+            <ul className="text-center">
+              {team.map(user => (
+                <li key={user.id} className="inline-block px-4 py-2 bg-gray-200 rounded-md mx-1">{user.name}</li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
@@ -110,8 +111,4 @@ const ParticipantInput = () => {
   );
 };
 
-export default ParticipantInput;
-
-
-
-
+export default Input;
