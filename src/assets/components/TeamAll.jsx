@@ -3,35 +3,40 @@ import axios from 'axios';
 import TeamCard from '../components/Atoms/TeamCard';
 
 const TeamAll = () => {
-  const [users, setUsers] = useState([]);
+  const [teams, setTeams] = useState([]);
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchTeams = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/bootcamps',); // Reemplaza con la URL de tu API
-        setUsers(response.data);
+        const response = await axios.get('http://127.0.0.1:8000/api/teams'); // Ruta de la API para obtener equipos
+        setTeams(response.data);
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error('Error fetching teams:', error);
       }
     };
 
-    fetchUsers();
+    fetchTeams();
   }, []);
 
   return (
     <div className="container mx-auto">
       <h1 className="text-3xl font-semibold text-center my-8">Lista de Equipos</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {users.map(user => (
-          <TeamCard
-            key={user.id} // Usar el id único del usuario como key
-            team_id={user.team_id} // Cambiar a team_id si se refiere al identificador del equipo
-            user_id={user.id} // Cambiar a id si se refiere al identificador del usuario
-            firstName={user.name} // Usar el nombre del usuario en lugar de 'Name'
-            lastName={user.lastname} // Cambiar a lastname si ese es el campo correcto
-            bootcamp={user.bootcamp} // Verifica que este campo sea correcto
-            level={user.level} // Verifica que este campo sea correcto
-          />
+        {teams.map(team => (
+          <div key={team.id}> {/* Usamos el id único del equipo como key */}
+            <h2 className="text-2xl font-semibold mb-2">{team.team}</h2> {/* Mostrar el nombre del equipo */}
+            {team.users.map(user => (
+              <TeamCard
+                key={user.id} // Usar el id único del usuario como key
+                team_id={team.id} // Pasar el id del equipo
+                user_id={user.id} // Pasar el id del usuario
+                firstName={user.name} // Nombre del usuario
+                lastName={user.lastname} // Apellido del usuario
+                bootcamp={user.bootcamp} // Bootcamp del usuario
+                level={user.pivot.level_id} // Nivel del usuario (asegúrate de obtenerlo correctamente)
+              />
+            ))}
+          </div>
         ))}
       </div>
     </div>
@@ -39,3 +44,4 @@ const TeamAll = () => {
 };
 
 export default TeamAll;
+
