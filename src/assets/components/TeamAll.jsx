@@ -32,7 +32,7 @@ const TeamAll = () => {
                 user_id={user.id} // Pasar el id del usuario
                 firstName={user.name} // Nombre del usuario
                 lastName={user.lastname} // Apellido del usuario
-                bootcamp={user.bootcamp} // Bootcamp del usuario
+                bootcamp={user.bootcamp_id} // Acceder al bootcamp del usuario
                 level={user.pivot.level_id} // Nivel del usuario (asegúrate de obtenerlo correctamente)
               />
             ))}
@@ -44,4 +44,5 @@ const TeamAll = () => {
 };
 
 export default TeamAll;
+
 
