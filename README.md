@@ -2,6 +2,8 @@
 
  Matchathon, una aplicación semiautomatizada, diseñada para simplificar el proceso de formación de equipos en eventos como la Hackathon F5. Matchathon transforma la manera en que creamos equipos equitativos para alcanzar el éxito en estos desafiantes eventos, garantizando la diversidad de conocimientos y simulando un entorno de trabajo real.
 
+![Vista de equipos creados](./src/images/ProyectImage.png)
+
 ## Descripción
 
 Este repositorio alberga la "Vista" de un modelo MVC, diseñada como una interfaz de usuario dinámica utilizando React. La aplicación se integra con un backend desarrollado en Laravel, que proporciona los modelos y controladores necesarios a través de una  [API dedicada](https://github.com/Macata47/MACHATHONBACK).
@@ -28,9 +30,9 @@ git clone https://github.com/LiwKltn/P-12-Matchathon-Front-end.git
 npm install
 
 npm run dev
+```
 
-
-Uso
+## Uso
 
 Ingresa los bootcamps
 Ingresa los datos de los coders en la vista Coders+
@@ -41,9 +43,13 @@ Ver equipos creados
 
 ## Creadoras: 
 [Maria Mendez](https://github.com/mariamf1985)
+<br>
 [Loli Vila](https://github.com/Vila71)
+<br>
 [Oliwia Koltun](https://github.com/LiwKltn)
+<br>
 [Marta Parra](https://github.com/Macata47)
+<br>
 [Johana Sandoval](https://github.com/Sandovaljohana)
 
 
