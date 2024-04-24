@@ -1,5 +1,19 @@
 import React from 'react';
 
+// Función para convertir el nivel de tecnología en una etiqueta descriptiva
+const getTechLevelLabel = (level_id) => {
+  switch (level_id) {
+    case 1:
+      return 'Senior';
+    case 2:
+      return 'Mid';
+    case 3:
+      return 'Junior';
+    default:
+      return 'Desconocido';
+  }
+};
+
 const TeamCard = ({ team_id, user_id, firstName, lastName, bootcamp, backendTechLevel, frontendTechLevel, controlVersionLevel }) => {
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto my-4">
@@ -11,17 +25,17 @@ const TeamCard = ({ team_id, user_id, firstName, lastName, bootcamp, backendTech
           <span className="font-bold">Bootcamp:</span> {bootcamp}<br />
           {backendTechLevel && (
             <div>
-              <span className="font-bold">Backend Tech Level:</span> {backendTechLevel.level_id}<br />
+              <span className="font-bold">Backend Tech Level:</span> {getTechLevelLabel(backendTechLevel.level_id)}<br />
             </div>
           )}
           {frontendTechLevel && (
             <div>
-              <span className="font-bold">Frontend Tech Level:</span> {frontendTechLevel.level_id}<br />
+              <span className="font-bold">Frontend Tech Level:</span> {getTechLevelLabel(frontendTechLevel.level_id)}<br />
             </div>
           )}
           {controlVersionLevel && (
             <div>
-              <span className="font-bold">Control Version Level:</span> {controlVersionLevel.level_id}<br />
+              <span className="font-bold">Control Version Level:</span> {getTechLevelLabel(controlVersionLevel.level_id)}<br />
             </div>
           )}
         </p>
@@ -31,6 +45,7 @@ const TeamCard = ({ team_id, user_id, firstName, lastName, bootcamp, backendTech
 };
 
 export default TeamCard;
+
 
 
 
