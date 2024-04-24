@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import FormCodersUser from '../components/Atoms/FormCodersUser';
 import FormCodersBootcamp from '../components/Atoms/FormCodersBootcamp';
-import FormCodersButton from '../components/Atoms/FormCodersButton'; // Importa el componente Button
+import FormCodersButton from '../components/Atoms/FormCodersButton';
 import FormCodersFrontTech from './Atoms/FormCodersFrontTech';
 import FormCodersBackendTech from './Atoms/FormCodersBackTech';
 import FormCodersControlVersion from './Atoms/FormCodersControlVersion';
@@ -100,7 +102,9 @@ const FormCoders = () => {
       setFrontendLevel('');
       setBackendLevel('');
       setVersionControlLevel('');
-      alert('Formulario enviado correctamente');
+
+      // Mostrar mensaje de éxito
+      toast.success('Formulario enviado correctamente');
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
       alert('Ocurrió un error al enviar el formulario');
@@ -110,9 +114,9 @@ const FormCoders = () => {
       }
     }
   };
-  
+
   return (
-    <div className="items-center justify-center mt-10">
+    <div className="items-center justify-center mt-10 mb-24">
       <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
         <FormCodersUser formData={formData} setFormData={setFormData} />
         <FormCodersBootcamp formData={formData} handleBootcampChange={handleBootcampChange} />
@@ -129,13 +133,14 @@ const FormCoders = () => {
           <FormCodersLevel formData={formData} level={versionControlLevel} handleLevelChange={handleVersionControlLevelChange} />
         </div>
         <FormCodersButton handleSubmit={handleSubmit} />
-
       </form>
+      <ToastContainer />
     </div>
   );
 };
 
 export default FormCoders;
+
 
 
 
