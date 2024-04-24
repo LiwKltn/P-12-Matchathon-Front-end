@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useFetch from '../../service/useFetch';
+import { Link } from 'react-router-dom';
 
 const ParticipantInput = () => {
   const [users, setUsers] = useState([]);
@@ -95,7 +96,11 @@ const ParticipantInput = () => {
           </div>
         </div>
         <div className="text-center mb-4">
-          <button onClick={generateTeams} className="px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600">Generar Equipos</button>
+        <Link to="/teams">
+      <button onClick={generateTeams} className="px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+        Generar Equipos
+      </button>
+    </Link>
         </div>
         {/* {teams !== null && teams.length > 0 && teams.map((team, index) => (
           <div key={team.team} className="mb-4">
