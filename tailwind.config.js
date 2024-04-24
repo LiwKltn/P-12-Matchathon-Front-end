@@ -1,9 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./src/**/*.{html,js}"],
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {},
+    colors: {
+      'azul': '#4211BA',
+    },
+    fontFamily: {
+      custom: ['Clash Grotesk', 'sans-serif'],
+    },
   },
   plugins: [],
 }
-
