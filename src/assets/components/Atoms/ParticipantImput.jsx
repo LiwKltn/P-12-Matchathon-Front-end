@@ -9,7 +9,7 @@ const ParticipantInput = () => {
   const [minParticipants, setMinParticipants] = useState('');
   const [maxParticipants, setMaxParticipants] = useState('');
   const { data } = useFetch("http://localhost:8000/api/users");
-  const [teams, setTeams] = useState([]); // Estado para almacenar los equipos
+  const [teams, setTeams] = useState([]); 
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -58,7 +58,6 @@ const ParticipantInput = () => {
     }));
 
     try {
-      // Almacena los nuevos equipos
       const response = await axios.post('http://localhost:8000/api/teams', {
         teams: teamsData,
       });

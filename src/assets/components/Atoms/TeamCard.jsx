@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Función para convertir el nivel de tecnología en una etiqueta descriptiva
 const getTechLevelLabel = (level_id) => {
   switch (level_id) {
     case 1:

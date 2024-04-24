@@ -26,7 +26,7 @@ const FormCodersBootcamp = ({ formData, handleBootcampChange }) => {
           value={formData.bootcamp_id}
           onChange={handleBootcampChange}
           required
-          
+
         >
           <option value="">Selecciona un bootcamp</option>
           {bootcamps.map((bootcamp) => (

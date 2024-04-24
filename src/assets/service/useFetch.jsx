@@ -14,13 +14,8 @@ const useFetch = (url) => {
                 console.error('Error fetching data:', error);
             }
         };
-
         fetchData();
-
-        // Cleanup function if needed
-
         return () => {
-            // Cleanup code here if needed
         };
     }, [url]);
 

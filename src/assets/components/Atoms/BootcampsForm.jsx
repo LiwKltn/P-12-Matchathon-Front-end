@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify'; 
-import 'react-toastify/dist/ReactToastify.css'; 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import useFetch from '../../service/useFetch';
 import axios from 'axios';
 

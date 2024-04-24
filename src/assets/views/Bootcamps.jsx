@@ -6,9 +6,9 @@ import Banner_nav from '../components/Atoms/Banner_nav';
 const Bootcamps = () => {
   return (
     <div>
-        <Navbar />
-        <Banner_nav />
-        <h1 className='text-azul text-xl font-custom flex justify-center mt-16'>Añade los Bootcamps que participarán de esta Hackathon</h1>
+      <Navbar />
+      <Banner_nav />
+      <h1 className='text-azul text-xl font-custom flex justify-center mt-16'>Añade los Bootcamps que participarán de esta Hackathon</h1>
       <BootcampsForm />
     </div>
   );
