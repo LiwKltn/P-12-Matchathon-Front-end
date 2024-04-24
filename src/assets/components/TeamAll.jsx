@@ -20,22 +20,24 @@ const TeamAll = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-8">Lista de Equipos</h1>
+      <h1 className="text-3xl font-semibold text-center my-8 text-indigo-800">Lista de Equipos</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {teams.map(team => (
-          <div key={team.id}> {/* Usamos el id único del equipo como key */}
-            <h2 className="text-2xl font-semibold mb-2">{team.team}</h2> {/* Mostrar el nombre del equipo */}
-            {team.users.map(user => (
-              <TeamCard
-                key={user.id} // Usar el id único del usuario como key
-                team_id={team.id} // Pasar el id del equipo
-                user_id={user.id} // Pasar el id del usuario
-                firstName={user.name} // Nombre del usuario
-                lastName={user.lastname} // Apellido del usuario
-                bootcamp={user.bootcamp_id} // Acceder al bootcamp del usuario
-                level={user.pivot.level_id} // Nivel del usuario (asegúrate de obtenerlo correctamente)
-              />
-            ))}
+          <div key={team.id} className="bg-white rounded-lg shadow-md p-4 border-2 border-indigo-800 text-indigo-900"> {/* Estilo para la tarjeta del equipo */}
+            <h2 className="text-2xl font-semibold mb-2 text-center">{team.team}</h2> {/* Estilo para el título del equipo */}
+            <div className="grid grid-cols-3 gap-4">
+              {team.users.map(user => (
+                <TeamCard
+                  key={user.id} // Usar el id único del usuario como key
+                  team_id={team.id} // Pasar el id del equipo
+                  user_id={user.id} // Pasar el id del usuario
+                  firstName={user.name} // Nombre del usuario
+                  lastName={user.lastname} // Apellido del usuario
+                  bootcamp={user.bootcamp_id} // Acceder al bootcamp del usuario
+                  level={user.pivot.level_id} // Nivel del usuario (asegúrate de obtenerlo correctamente)
+                />
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -44,5 +46,6 @@ const TeamAll = () => {
 };
 
 export default TeamAll;
+
 
 
